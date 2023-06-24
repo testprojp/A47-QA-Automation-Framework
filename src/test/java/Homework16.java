@@ -11,7 +11,7 @@ import java.time.Duration;
 public class Homework16 extends BaseTest
 {
     @Test
-    public void RegistrationNavigation()
+    public void registrationNavigation()
     {
         //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
@@ -19,7 +19,7 @@ public class Homework16 extends BaseTest
 
 
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 
         WebElement registrationLink = driver.findElement(By.cssSelector("[id='hel']"));
         registrationLink.click();
