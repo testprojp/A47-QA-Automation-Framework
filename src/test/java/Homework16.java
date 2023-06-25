@@ -19,14 +19,16 @@ public class Homework16 extends BaseTest
 
 
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+        String registrationUrl  = "https://qa.koel.app/";
+        driver.get(registrationUrl);
+        Assert.assertEquals(driver.getCurrentUrl(), registrationUrl);
+
 
         WebElement registrationLink = driver.findElement(By.cssSelector("[id='hel']"));
         registrationLink.click();
 
-        String registrationUrl  = "https://qa.koel.app/registration.php/";
-        driver.get(registrationUrl);
-        Assert.assertEquals(driver.getCurrentUrl(), registrationUrl);
         driver.quit();
     }
 }
