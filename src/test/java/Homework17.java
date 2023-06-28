@@ -10,7 +10,7 @@ public class Homework17 extends BaseTest {
         String newSongAddedToPlaylistNotification = "Added 1 song into";
         //Opens url WebPage
         accessUrlPage();
-        //Enters email credentials into webpage Email space
+        //Enters email & password credentials into webpage
         provideEmailCredentials("james.patterson@testpro.io");
         providePasswordCredentials("te$t$tudent");
 

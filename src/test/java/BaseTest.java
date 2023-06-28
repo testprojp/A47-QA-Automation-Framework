@@ -30,8 +30,10 @@ public class BaseTest
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        urlPage();
     }
 
     @AfterMethod
@@ -117,9 +119,9 @@ public class BaseTest
     public void selectedSongAddedToPlaylist() throws InterruptedException
     {
         //Adds selected song to playlist
-        WebElement songPlaylist = driver.findElement(By.xpath("//*[@id=\'songResultsWrapper\']/header/div[3]/div/section[1]/ul/li[5]"));
+        WebElement songPlaylist = driver.findElement(By.xpath("//*[@id='recentlyPlayedWrapper']/header/div[3]/div/section[1]/ul/li[6]"));
         songPlaylist.click();
-        Thread.sleep(5000);
+        Thread.sleep(20000);
     }
 
     public String addedSongMessage() throws InterruptedException

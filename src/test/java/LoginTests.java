@@ -14,7 +14,7 @@ public class LoginTests extends BaseTest
     @Test
     public void LoginEmptyEmailPasswordTest() {
 
-//      Added ChromeOptions argument below to fix websocket error
+        // Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
@@ -40,18 +40,5 @@ public class LoginTests extends BaseTest
         //Check if the user avatar is displaying
         WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
         Assert.assertTrue(avatar.isDisplayed());
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
