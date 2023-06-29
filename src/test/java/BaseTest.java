@@ -88,7 +88,7 @@ public class BaseTest
         WebElement songSearchInput = driver.findElement(By.cssSelector("#searchForm > input[type=search]"));
         songSearchInput.click();
         songSearchInput.clear();
-        songSearchInput.sendKeys("Take my Hand");
+        songSearchInput.sendKeys("Pluto");
         Thread.sleep(5000);
     }
 
@@ -119,14 +119,18 @@ public class BaseTest
     public void selectedSongAddedToPlaylist() throws InterruptedException
     {
         //Adds selected song to playlist
-        WebElement songPlaylist = driver.findElement(By.xpath("//*[@id='recentlyPlayedWrapper']/header/div[3]/div/section[1]/ul/li[6]"));
+        //Thread.sleep(3000);
+        WebElement songPlaylist = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/section[1]/section[11]/header/div[3]/div/section[1]/ul/li[5]"));
         songPlaylist.click();
         Thread.sleep(20000);
     }
 
+    public void choosePlayList() throws InterruptedException {
+        WebElement playListElement = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/section[1]/section[11]/header/div[3]/div/section[1]/ul/li[5]"));
+        playListElement.click();
+    }
     public String addedSongMessage() throws InterruptedException
     {
-        //return songAddedMessage.getText();
         WebElement songAddedMessage = driver.findElement(By.cssSelector("div.alertify-logs.top.right"));
         return songAddedMessage.getText();
     }
