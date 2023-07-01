@@ -1,9 +1,7 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Homework17 extends BaseTest {
+public class Homework18 extends BaseTest {
     @Test
 
     public void addSongToPlaylist() throws InterruptedException {
@@ -16,15 +14,25 @@ public class Homework17 extends BaseTest {
 
         loginButton();
 
-        songSearch("Take my Hand");
+//        songSearch("Pluto");
+//
+//        viewAllSongs();
+//
+//        firstSongSelection();
+//
+//        addToButton();
+//
+//        selectedSongAddedToPlaylist();
+//
+//        Assert.assertTrue(addedSongMessage().contains(newSongAddedToPlaylistNotification));
+//
+//        homeButton();
 
-        viewAllSongs();
+//        playSong();
 
-        firstSongSelection();
+        clickPlayButton();
 
-        addToButton();
+        Assert.assertTrue(songPlaying());
 
-        selectedSongAddedToPlaylist();
-        Assert.assertTrue(addedSongMessage().contains(newSongAddedToPlaylistNotification));
     }
 }
