@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,8 @@ import java.time.Duration;
 public class BaseTest {
 
     public static WebDriver driver = null;
+
+    public static WebDriverWait wait;
     public static String url = "https://qa.koel.app/";
 
     @BeforeSuite
@@ -34,6 +37,7 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //urlPage();
         url = BaseURL;
         driver.get(url);
@@ -45,14 +49,12 @@ public class BaseTest {
         driver.quit();
     }
 
-    @DataProvider(name = "IncorrectLoginProviders")
+    @DataProvider(name = "CorrectLoginProvider")
     public static Object[][] getDataFromDataProviders()
     {
         return new Object[][]
                 {
-                        {"notExisting@email.com", "NotExistingPassword"},
-                        {"james@test.com", ""},
-                        {"", ""}
+                        {"james.patterson@testpro.io", "te$t$tudent"},
                 };
     }
 
@@ -170,13 +172,13 @@ public class BaseTest {
     public void openPlaylist()
     {
         //WebElement playlistToDelete = driver.findElement(By.xpath("//*[@id='playlists']/ul/li[3]/a/text()"));
-        WebElement playlistToDelete = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='playlists']/ul/li[3]/a/text()")));
+        WebElement playlistToDelete = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
         playlistToDelete.click();
     }
 
-    public void clickDeletePlaylistButon()
+    public void clickDeletePlaylistButton()
     {
-        WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("#playlistWrapper > header > div.song-list-controls > span > button.del.btn-delete-playlist")));
+        WebElement deletePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-delete-playlist")));
         deletePlaylist.click();
     }
 
@@ -188,7 +190,7 @@ public class BaseTest {
 
     public String getDeletedPlaylistMessage()
     {
-         WebElement notificationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.successs.show")));
+         WebElement notificationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
          return notificationMessage.getText();
     }
 }

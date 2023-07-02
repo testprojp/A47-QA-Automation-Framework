@@ -6,15 +6,15 @@ import org.testng.annotations.Test;
 public class Homework19 extends BaseTest
 {
     @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
-    public void deleteAPlaylist()
+    public void deleteAPlaylist(String email, String password)
     {
         String deletedPlayListMessage = "Deleted Playlist";
         //accessUrlPage();
-        provideEmailCredentials(email);
-        providePasswordCredentials(password);
+        provideEmailCredentials("james.patterson@testpro.io");
+        providePasswordCredentials("te$t$tudent");
         loginButton();
         openPlaylist();
-        clickDeletePlaylistButon();
+        clickDeletePlaylistButton();
         confirmDeletedPlaylistMessage();
         Assert.assertTrue(getDeletedPlaylistMessage().contains(deletedPlayListMessage));
     }
