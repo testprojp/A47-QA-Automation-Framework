@@ -1,7 +1,10 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.compress.harmony.unpack200.bytecode.InnerClassesAttribute;
 import org.bouncycastle.crypto.tls.ByteQueueOutputStream;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,7 +15,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
 
 
+import java.security.Key;
 import java.time.Duration;
+import java.util.List;
 
 
 public class BaseTest {
@@ -20,6 +25,8 @@ public class BaseTest {
     public static WebDriver driver = null;
 
     public static WebDriverWait wait;
+
+    public static Actions actions = null;
     public static String url = "https://qa.koel.app/";
 
     @BeforeSuite
@@ -41,6 +48,8 @@ public class BaseTest {
         //urlPage();
         url = BaseURL;
         driver.get(url);
+
+        actions = new Actions(driver);
     }
 
     @AfterMethod
@@ -192,5 +201,84 @@ public class BaseTest {
     {
          WebElement notificationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
          return notificationMessage.getText();
+    }
+
+    //Double Click Method
+    public void doubleClickChoosePlaylist()
+    {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
+        actions.doubleClick(driver.findElement(By.cssSelector(".playlist:nth-child(3)"))).perform();
+    }
+
+    //Play song helper functions
+    public void chooseAllSongsList()
+    {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".overlay.loading")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li a.songs"))).click();
+    }
+
+    public void contextClickFirstSong()
+    {
+        WebElement firstSongElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(4)")));
+        actions.contextClick(firstSongElement).perform();
+    }
+
+    public void choosePlayOption()
+    {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("li.playback"))).click();
+    }
+
+    public WebElement hoverPlay()
+    {
+        WebElement play = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='play-btn']")));
+        actions.moveToElement(play).perform();
+        return driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+    }
+
+    //Counting number of songs in a playlist
+    public void choosePlaylistByName(String playlistName)
+    {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + playlistName + "')]"))).click();
+    }
+
+    public int countSongsInPlaylist()
+    {
+        return driver.findElements(By.cssSelector("section#playlistWrapper td.title")).size();
+    }
+
+    public String getPlaylistDetails()
+    {
+        return driver.findElement(By.cssSelector("span.meta.text-secondary span.meta")).getText();
+    }
+    public void displayAllSongs()
+    {
+        List<WebElement> songList = driver.findElements(By.cssSelector("section#playlistWrapper td.title"));
+        System.out.println("Number of Songs Found: " + countSongsInPlaylist());
+        for (WebElement e: songList){
+            System.out.println(e.getText());
+        }
+    }
+
+    //Helper functions to rename playlist
+
+    String enterNewPlaylistName = "My New Playlist";
+    public void doubleClickPlaylist ()
+    {
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
+        actions.doubleClick(playlistElement).perform();
+    }
+
+    public void enterNewPlaylistName()
+    {
+        WebElement playListInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
+        playListInputField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
+        playListInputField.sendKeys(enterNewPlaylistName);
+        playListInputField.sendKeys(Keys.ENTER);
+    }
+
+    public boolean doesPlaylistNameExist()
+    {
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + enterNewPlaylistName + "')]")));
+        return playlistElement.isDisplayed();
     }
 }
