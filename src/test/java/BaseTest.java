@@ -281,4 +281,27 @@ public class BaseTest {
         WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + enterNewPlaylistName + "')]")));
         return playlistElement.isDisplayed();
     }
+
+    //Helper functions to create a new playlist
+    String createNewPlaylist = "My New Playlist";
+    public void clickOnPlusSymbol ()
+    {
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("i.fa.fa-plus-circle.create.creating")));
+        actions.click(playlistElement).perform();
+    }
+
+    public void clickNewPlaylist()
+    {
+        WebElement newPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("//li[@data-testid='playlist-context-menu-create-simple']")));
+        actions.click(newPlaylist).perform();
+    }
+
+    public void enterPlaylistName()
+    {
+        WebElement playlistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists > form > input[type=text]")));
+        actions.click(playlistName).perform();
+        playlistName.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
+        playlistName.sendKeys(enterNewPlaylistName);
+        playlistName.sendKeys(Keys.ENTER);
+    }
 }

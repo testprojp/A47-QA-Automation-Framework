@@ -18,17 +18,21 @@ public class Homework21 extends BaseTest
 //        Assert.assertTrue(getDeletedPlaylistMessage().contains(deletedPlayListMessage));
 //    }
 
-//    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
-//    public void createAPlaylist(String email, String password)
-//    {
-//        String createAPlaylist = "Created playlist ";
-//
-//        provideEmailCredentials("james.patterson@testpro.io");
-//        providePasswordCredentials("te$t$tudent");
-//        loginButton();
-//
-//        clickOnPlusSymbol();
-//    }
+    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
+    public void createAPlaylist(String email, String password)
+    {
+        String createAPlaylist = "Created playlist ";
+
+        provideEmailCredentials("james.patterson@testpro.io");
+        providePasswordCredentials("te$t$tudent");
+        loginButton();
+
+        clickOnPlusSymbol();
+        clickNewPlaylist();
+        enterPlaylistName();
+
+        Assert.assertTrue(doesPlaylistNameExist());
+    }
 //    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
 //    public void playSong(String email, String password)
 //    {
