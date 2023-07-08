@@ -286,13 +286,13 @@ public class BaseTest {
     String createNewPlaylist = "My New Playlist";
     public void clickOnPlusSymbol ()
     {
-        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("i.fa.fa-plus-circle.create.creating")));
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='playlists']/h1/i")));
         actions.click(playlistElement).perform();
     }
 
     public void clickNewPlaylist()
     {
-        WebElement newPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("//li[@data-testid='playlist-context-menu-create-simple']")));
+        WebElement newPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='playlists']/nav/ul/li[1]")));
         actions.click(newPlaylist).perform();
     }
 
