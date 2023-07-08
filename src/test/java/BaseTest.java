@@ -20,13 +20,16 @@ import java.time.Duration;
 import java.util.List;
 
 
-public class BaseTest {
+public class BaseTest
+{
 
     public static WebDriver driver = null;
 
     public static WebDriverWait wait;
 
     public static Actions actions = null;
+
+    public static String url = null;
     public static String url = "https://qa.koel.app/";
 
     @BeforeSuite
@@ -281,4 +284,5 @@ public class BaseTest {
         WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'" + enterNewPlaylistName + "')]")));
         return playlistElement.isDisplayed();
     }
+
 }

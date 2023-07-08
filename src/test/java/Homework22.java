@@ -2,7 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class Homework21 extends BaseTest
+public class Homework22 extends BaseTest
 {
 //    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
 //    public void deleteAPlaylist(String email, String password)
