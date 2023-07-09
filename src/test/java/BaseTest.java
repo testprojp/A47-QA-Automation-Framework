@@ -30,7 +30,7 @@ public class BaseTest
     public static Actions actions = null;
 
     public static String url = null;
-    public static String url = "https://qa.koel.app/";
+    //public static String url = "https://qa.koel.app/";
 
     @BeforeSuite
     static void setupClass() {
