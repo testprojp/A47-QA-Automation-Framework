@@ -1,14 +1,20 @@
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.HomePage;
 import pages.LoginPage;
 
 
 import static pages.BasePage.driver;
 
-public class LoginTests extends BaseTest
+public class LoginTests extends BasePage
 {
+    public LoginTests(WebDriver givenDriver)
+    {
+        super(givenDriver);
+    }
     @Test
     public void loginValidEmailPasswordTest()
     {

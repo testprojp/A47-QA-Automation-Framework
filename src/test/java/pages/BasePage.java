@@ -13,6 +13,7 @@ import java.time.Duration;
 
 public class BasePage
 {
+
     public static WebDriver driver = null;
     public static WebDriverWait wait = null;
     public static Actions actions = null;

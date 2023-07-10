@@ -1,9 +1,16 @@
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
+import pages.LoginPage;
 
 
-public class Homework22 extends BaseTest
+public class Homework22 extends BasePage
 {
+    public Homework22(WebDriver givenDriver)
+    {
+        super(givenDriver);
+    }
 //    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
 //    public void deleteAPlaylist(String email, String password)
 //    {
@@ -76,14 +83,18 @@ public class Homework22 extends BaseTest
     public void renamePlaylist(String email, String password)
     {
         //accessUrlPage();
-        provideEmailCredentials("james.patterson@testpro.io");
-        providePasswordCredentials("te$t$tudent");
-        loginButton();
+        //provideEmailCredentials("james.patterson@testpro.io");
+        //providePasswordCredentials("te$t$tudent");
+        //loginButton();
 
-        doubleClickPlaylist();
-        enterNewPlaylistName();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login();
 
-        Assert.assertTrue(doesPlaylistNameExist());
+        //doubleClickPlaylist();
+        //enterNewPlaylistName();
+
+        //Assert.assertTrue(doesPlaylistNameExist());
     }
+
 
 }

@@ -265,7 +265,7 @@ public class BaseTest
     //Helper functions to rename playlist
 
     String enterNewPlaylistName = "My New Playlist";
-    public void doubleClickPlaylist ()
+    public void doubleClickPlaylist()
     {
         WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
         actions.doubleClick(playlistElement).perform();
