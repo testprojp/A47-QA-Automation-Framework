@@ -1,5 +1,7 @@
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;
@@ -21,7 +23,8 @@ public class LoginTests extends BasePage
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-        loginPage.login();
+        loginPage.provideEmail("james.patterson@testpro.io").providePassword("te$t$tudent").clickLoginButton();
+
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }

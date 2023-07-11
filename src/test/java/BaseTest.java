@@ -54,6 +54,12 @@ public class BaseTest
 
         actions = new Actions(driver);
     }
+        By overLayLocator = By.cssSelector(".overlay.loading");
+
+    public void waitForOverlayDisappear()
+    {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(overLayLocator));
+    }
 
     @AfterMethod
     public void closeBrowser() {
@@ -214,11 +220,11 @@ public class BaseTest
     }
 
     //Play song helper functions
-    public void chooseAllSongsList()
-    {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".overlay.loading")));
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li a.songs"))).click();
-    }
+//    public void chooseAllSongsList()
+//    {
+//        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".overlay.loading")));
+//        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li a.songs"))).click();
+//    }
 
     public void contextClickFirstSong()
     {

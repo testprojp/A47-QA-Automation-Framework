@@ -2,6 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 public class LoginPage extends BasePage
 {
     public LoginPage(WebDriver givenDriver)
@@ -9,23 +12,34 @@ public class LoginPage extends BasePage
         super(givenDriver);
     }
 
-    By emailField = By.cssSelector("[type='email']");
-    By passwordField = By.cssSelector("[type='password']");
-    By loginButton = By.cssSelector("button[type='submit']");
+    //WebElements
+    @FindBy(css = "[type='email']")
+    WebElement emailField;
+    @FindBy(css = "[type='password']")
+    WebElement passwordField;
+    @FindBy(css = "button[type='submit']")
+    WebElement loginButton;
 
-    public void provideEmail(String email)
+//    By emailField = By.cssSelector("[type='email']");
+//    By passwordField = By.cssSelector("[type='password']");
+//    By loginButton = By.cssSelector("button[type='submit']");
+
+    public LoginPage provideEmail(String email)
     {
-        findElement(emailField).sendKeys(email);
+        emailField.sendKeys(email);
+        return this;
     }
 
-    public void providePassword(String password)
+    public LoginPage providePassword(String password)
     {
-        findElement(passwordField).sendKeys(password);
+        passwordField.sendKeys(password);
+        return this;
     }
 
-    public void clickLoginButton()
+    public LoginPage clickLoginButton()
     {
-        findElement(loginButton).click();
+        loginButton.click();
+        return this;
     }
 
     public void login()
