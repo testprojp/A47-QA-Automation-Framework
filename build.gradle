@@ -19,4 +19,13 @@ test {
     useTestNG() {
         suites "src/test/resources/TestNG.xml"
     }
+
+task testSmoke(type: Test)
+    {
+        useTestNG()
+                {
+                    suites "src/test/resources/Smoke.xml"
+                    systemProperty"browser", System.getProperty("browser")
+                }
+    }
 }
