@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class BasePage
 {
-
+    By overLayLocator = By.cssSelector(".overlay.loading");
     public static WebDriver driver = null;
     public static WebDriverWait wait = null;
     public static Actions actions = null;
@@ -40,6 +40,11 @@ public class BasePage
     {
         WebElement play = driver.findElement(locator);
         actions.moveToElement(play).perform();
+    }
+
+    public void waitForOverlayDisappear()
+    {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(overLayLocator));
     }
 }
 
