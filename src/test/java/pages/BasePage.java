@@ -29,5 +29,10 @@ public class BasePage
     {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-}
+
+    public void doubleClick(By locator)
+    {
+        actions.doubleClick(findElement(locator)).perform();
+        }
+    }
 

@@ -2,13 +2,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;
+import pages.HomePage;
 import pages.LoginPage;
 
 
-public class Homework22 extends BasePage
-{
-    public Homework22(WebDriver givenDriver)
-    {
+public class Homework22 extends BasePage {
+    public Homework22(WebDriver givenDriver) {
         super(givenDriver);
     }
 //    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
@@ -25,7 +24,7 @@ public class Homework22 extends BasePage
 //        Assert.assertTrue(getDeletedPlaylistMessage().contains(deletedPlayListMessage));
 //    }
 
-//    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
+    //    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
 //    public void createAPlaylist(String email, String password)
 //    {
 //        String createAPlaylist = "Created playlist ";
@@ -78,23 +77,27 @@ public class Homework22 extends BasePage
 //        hoverPlay();
 //        Assert.assertTrue(hoverPlay().isDisplayed());
 //    }
+//(dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
+    @Test
+    public class PlaylistTests extends BaseTest {
 
-    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
-    public void renamePlaylist(String email, String password)
-    {
-        //accessUrlPage();
-        //provideEmailCredentials("james.patterson@testpro.io");
-        //providePasswordCredentials("te$t$tudent");
-        //loginButton();
+        public void renamePlaylist() {
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login();
+            String playlistName = "My test playlist";
+            //accessUrlPage();
+            //provideEmailCredentials("james.patterson@testpro.io");
+            //providePasswordCredentials("te$t$tudent");
+            //loginButton();
 
-        //doubleClickPlaylist();
-        //enterNewPlaylistName();
+            LoginPage loginPage = new LoginPage(driver);
+            HomePage homePage = new HomePage(driver);
 
-        //Assert.assertTrue(doesPlaylistNameExist());
+            loginPage.login();
+
+            homePage.doubleClickPlaylist();
+            homePage.enterNewPlaylistName();
+
+            Assert.assertTrue(homePage.doesPlaylistNameExist(playlistName));
+        }
     }
-
-
 }

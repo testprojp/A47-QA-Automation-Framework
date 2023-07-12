@@ -12,6 +12,7 @@ import static pages.BasePage.driver;
 public class LoginTests extends BasePage
 {
     public LoginTests(WebDriver givenDriver)
+
     {
         super(givenDriver);
     }
