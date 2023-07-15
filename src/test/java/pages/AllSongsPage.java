@@ -13,6 +13,7 @@ public class AllSongsPage extends BasePage
     By firstSong = By.cssSelector(".all-songs tr.song-item:nth-child(1)");
     By playSong = By.cssSelector("li.playback");
     By soundBar = By.xpath("//*[@id='mainFooter']/div[2]/div[2]/div/button[1]/div");
+
     //play song functions
     public void contextClickFirstSong()
     {

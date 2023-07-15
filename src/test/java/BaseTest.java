@@ -1,6 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.compress.harmony.unpack200.bytecode.InnerClassesAttribute;
-import org.bouncycastle.crypto.tls.ByteQueueOutputStream;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,7 +7,6 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -17,9 +14,6 @@ import org.testng.annotations.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
-
-
-import java.security.Key;
 import java.time.Duration;
 import java.util.List;
 

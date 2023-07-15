@@ -20,10 +20,6 @@ public class LoginPage extends BasePage
     @FindBy(css = "button[type='submit']")
     WebElement loginButton;
 
-//    By emailField = By.cssSelector("[type='email']");
-//    By passwordField = By.cssSelector("[type='password']");
-//    By loginButton = By.cssSelector("button[type='submit']");
-
     public LoginPage provideEmail(String email)
     {
         emailField.sendKeys(email);
