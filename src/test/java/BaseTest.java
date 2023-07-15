@@ -84,12 +84,6 @@ public class BaseTest
 
         actions = new Actions(driver);
     }
-        By overLayLocator = By.cssSelector(".overlay.loading");
-
-    public void waitForOverlayDisappear()
-    {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(overLayLocator));
-    }
 
     @AfterMethod
     public void closeBrowser() {
