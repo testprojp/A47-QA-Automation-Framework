@@ -25,7 +25,7 @@ public class BaseTest
 
     public static WebDriver driver = null;
 
-    public static WebDriverWait wait;
+    public static WebDriverWait wait = null;
 
     public static Actions actions = null;
 
@@ -106,7 +106,4 @@ public class BaseTest
         WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
         Assert.assertTrue(avatar.isDisplayed());
     }
-
-
-
 }

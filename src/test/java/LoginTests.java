@@ -7,7 +7,7 @@ import pages.HomePage;
 import pages.LoginPage;
 
 
-import static pages.BasePage.driver;
+
 
 public class LoginTests extends BasePage
 {
