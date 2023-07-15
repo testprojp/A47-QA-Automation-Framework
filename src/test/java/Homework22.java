@@ -5,9 +5,14 @@ import pages.BasePage;
 import pages.HomePage;
 import pages.LoginPage;
 
+import static pages.BasePage.driver;
 
-public class Homework22 extends BasePage {
-    public Homework22(WebDriver givenDriver) {
+
+public class Homework22 extends BasePage
+{
+
+    public Homework22(WebDriver givenDriver)
+    {
         super(givenDriver);
     }
 //    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
@@ -78,10 +83,11 @@ public class Homework22 extends BasePage {
 //        Assert.assertTrue(hoverPlay().isDisplayed());
 //    }
 //(dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
-    @Test
-    public class PlaylistTests extends BaseTest {
 
-        public void renamePlaylist() {
+    public class PlaylistTests
+    {
+        @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
+        public void renamePlaylist(String email, String password) {
 
             String playlistName = "My test playlist";
             //accessUrlPage();
