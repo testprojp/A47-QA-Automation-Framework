@@ -8,19 +8,20 @@ import pages.LoginPage;
 
 
 
-public class Homework22 extends BasePage
+public class Homework22 extends BaseTest
 {
 
-    public Homework22(WebDriver givenDriver)
-    {
-        super(givenDriver);
-    }
-    public class PlaylistTests
-    {
+//    public Homework22(WebDriver givenDriver)
+//    {
+//        super(givenDriver);
+//    }
+//    public class PlaylistTests
+//    {
         @Test(dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
-        public void renamePlaylist(String email, String password) {
+        public void renamePlaylist(String email, String password)
+        {
 
-            String playlistName = "My test playlist";
+            String enterNewPlaylistName = "My test playlist";
 
             LoginPage loginPage = new LoginPage(driver);
             HomePage homePage = new HomePage(driver);
@@ -30,7 +31,7 @@ public class Homework22 extends BasePage
             homePage.doubleClickPlaylist();
             homePage.enterNewPlaylistName();
 
-            Assert.assertTrue(homePage.doesPlaylistNameExist(playlistName));
+            Assert.assertTrue(homePage.doesPlaylistNameExist(enterNewPlaylistName));
         }
-    }
+//    }
 }
