@@ -65,37 +65,37 @@ public class BaseTest
                 };
     }
 
-//    protected static void provideEmailCredentials(String email) {
-//        //Enters email credentials
-//        WebElement emailInput = driver.findElement((By.cssSelector("[type='email']")));
-//        emailInput.click();
-//        emailInput.clear();
-//        emailInput.sendKeys(email);
-//    }
+    protected static void provideEmailCredentials(String email) {
+        //Enters email credentials
+        WebElement emailInput = driver.findElement((By.cssSelector("[type='email']")));
+        emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys(email);
+    }
 
-//    protected static void providePasswordCredentials(String password) {
-//        //Enters password credentials
-//        WebElement passwordInput = driver.findElement((By.cssSelector("[type='password']")));
-//        passwordInput.click();
-//        passwordInput.clear();
-//        passwordInput.sendKeys(password);
-//    }
+    protected static void providePasswordCredentials(String password) {
+        //Enters password credentials
+        WebElement passwordInput = driver.findElement((By.cssSelector("[type='password']")));
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+    }
 
-//    protected static void loginButton() {
-//        //Clicks login button
-//        WebElement loginButton = driver.findElement(By.cssSelector(("button[type='submit']")));
-//        loginButton.submit();
-//    }
-//
-//    protected static void urlPage() {
-//        //Opens web url page
-//        String url = "https://qa.koel.app/";
-//        driver.get(url);
-//    }
+    protected static void loginButton() {
+        //Clicks login button
+        WebElement loginButton = driver.findElement(By.cssSelector(("button[type='submit']")));
+        loginButton.submit();
+    }
 
-//    protected static void avatarIconVisible() {
-//        //Check if the user avatar is displaying
-//        WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
-//        Assert.assertTrue(avatar.isDisplayed());
-//    }
+    protected static void urlPage() {
+        //Opens web url page
+        String url = "https://qa.koel.app/";
+        driver.get(url);
+    }
+
+    protected static void avatarIconVisible() {
+        //Check if the user avatar is displaying
+        WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
+        Assert.assertTrue(avatar.isDisplayed());
+    }
 }

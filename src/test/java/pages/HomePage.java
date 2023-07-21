@@ -39,6 +39,7 @@ public class HomePage extends BasePage
         playListInputField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
         playListInputField.sendKeys(enterNewPlaylistName);
         playListInputField.sendKeys(Keys.ENTER);
+
     }
     //Helper functions for Homework17 tasks
     public void songSearch(String songTitle) throws InterruptedException {

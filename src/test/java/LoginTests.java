@@ -7,15 +7,13 @@ import pages.HomePage;
 import pages.LoginPage;
 
 
-
-
 public class LoginTests extends BasePage
 {
     public LoginTests(WebDriver givenDriver)
-
     {
         super(givenDriver);
     }
+
     @Test
     public void loginValidEmailPasswordTest()
     {
@@ -27,3 +25,5 @@ public class LoginTests extends BasePage
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 }
+
+
