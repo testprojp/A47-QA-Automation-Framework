@@ -14,7 +14,7 @@ public class Homework22 extends BaseTest
         public void renamePlaylist(String email, String password)
         {
 
-            String enterNewPlaylistName = "My test playlist";
+            String enterNewPlaylistName = "My New Playlist";
 
             LoginPage loginPage = new LoginPage(driver);
             HomePage homePage = new HomePage(driver);
