@@ -15,9 +15,9 @@ import java.time.Duration;
 public class BasePage
 {
 
-    protected WebDriver driver = null;
-    protected WebDriverWait wait = null;
-    protected Actions actions = null;
+    public static WebDriver driver = null;
+    public static WebDriverWait wait = null;
+    public static Actions actions = null;
     public static String url = null;
 
     public BasePage (WebDriver givenDriver)

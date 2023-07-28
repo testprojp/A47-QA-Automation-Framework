@@ -7,12 +7,13 @@ import pages.HomePage;
 import pages.LoginPage;
 
 
-public class Homework23 extends BasePage
+public class Homework23 extends BaseTest
 {
-    public Homework23(WebDriver givenDriver)
-    {
-        super(givenDriver);
-    }
+//    public Homework23(WebDriver givenDriver)
+//    {
+//        super(givenDriver);
+//    }
+
 //    @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
 //    public void deleteAPlaylist(String email, String password)
 //    {
@@ -89,6 +90,7 @@ public class Homework23 extends BasePage
     @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
     public void renamePlaylist(String email, String password)
     {
+        String enterNewPlaylistName = "My New Playlist";
         //accessUrlPage();
         //provideEmailCredentials("james.patterson@testpro.io");
         //providePasswordCredentials("te$t$tudent");
@@ -96,12 +98,12 @@ public class Homework23 extends BasePage
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
+        HomePage homePage   = new HomePage(driver);
 
-        //doubleClickPlaylist();
-        //enterNewPlaylistName();
 
-        //Assert.assertTrue(doesPlaylistNameExist());
+        homePage.doubleClickPlaylist();
+        homePage.enterNewPlaylistName();
+
+        Assert.assertTrue(homePage.doesPlaylistNameExist());
     }
-
-
 }

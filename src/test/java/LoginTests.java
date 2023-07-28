@@ -10,12 +10,8 @@ import pages.LoginPage;
 
 
 
-public class LoginTests extends BasePage
+public class LoginTests extends BaseTest
 {
-    public LoginTests(WebDriver givenDriver)
-    {
-        super(givenDriver);
-    }
     @Test
     public void loginValidEmailPasswordTest()
     {
