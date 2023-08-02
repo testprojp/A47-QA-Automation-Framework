@@ -7,6 +7,8 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -14,6 +16,9 @@ import org.testng.annotations.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.time.Duration;
 import java.util.List;
 
@@ -30,16 +35,17 @@ public class BaseTest
     public static String url = null;
     //public static String url = "https://qa.koel.app/";
 
+
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
-    public static WebDriver pickBrowser(String browserName)
-    {
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
-        String gridURL = "https://IP Address selinium grid";
-        switch (browserName)
+        String gridURL = "http://172.31.10.130:4444";
+
+        switch (browser)
         {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -49,19 +55,27 @@ public class BaseTest
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--remote-allow-origins=*");
                 return driver = new EdgeDriver();
+            case "grid-edge": //gradle clean test -Dbrowser=grid-edge
+                caps.setCapability("browserName", "MicrosoftEdge");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+            case "grid-firefox": //gradle clean test -Dbrowser=grid-firefox
+                caps.setCapability("browserName", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+            case "grid-chrome": //gradle clean test -Dbrowser=grid-chrome
+                caps.setCapability("browserName", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
-                driver = new ChromeDriver();
-                return driver = new ChromeDriver();
+                return driver = new ChromeDriver(options);
         }
     }
     @BeforeMethod
     @Parameters({"BaseURL"})
-    public void accessUrlPage(String BaseURL) {
+    public void accessUrlPage(String BaseURL) throws MalformedURLException {
         //Added ChromeOptions argument below to fix websocket error
-        driver = pickBrowser((System.getProperty("browser")));
+        driver = pickBrowser(System.getProperty("browser"));
 
 
         //ChromeOptions options = new ChromeOptions();
@@ -75,7 +89,6 @@ public class BaseTest
         //urlPage();
         url = BaseURL;
         driver.get(url);
-
         actions = new Actions(driver);
     }
 
@@ -116,13 +129,14 @@ public class BaseTest
         loginButton.submit();
     }
 
-    protected static void urlPage() {
+    public static void urlPage()
+    {
         //Opens web url page
         String url = "https://qa.koel.app/";
         driver.get(url);
     }
 
-    protected static void avatarIconVisible() {
+    public static void avatarIconVisible() {
         //Check if the user avatar is displaying
         WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
         Assert.assertTrue(avatar.isDisplayed());

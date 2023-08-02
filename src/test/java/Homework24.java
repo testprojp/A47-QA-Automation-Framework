@@ -7,13 +7,8 @@ import pages.HomePage;
 import pages.LoginPage;
 
 
-public class Homework24 extends BasePage
+public class Homework24 extends BaseTest
 {
-    public Homework24(WebDriver givenDriver)
-    {
-        super(givenDriver);
-    }
-
     @Test
     public void playSong()
     {
@@ -50,13 +45,9 @@ public class Homework24 extends BasePage
     @Test (dataProvider = "CorrectLoginProvider", dataProviderClass = BaseTest.class)
     public void renamePlaylist(String email, String password)
     {
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
 
-
         //Assert.assertTrue(doesPlaylistNameExist());
     }
-
-
 }

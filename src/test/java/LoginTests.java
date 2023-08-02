@@ -11,20 +11,30 @@ import pages.LoginPage;
 
 import static pages.BasePage.driver;
 
-public class LoginTests extends BasePage
+public class LoginTests extends BaseTest
 {
-    public LoginTests(WebDriver givenDriver)
-    {
-        super(givenDriver);
-    }
+//    public LoginTests(WebDriver givenDriver)
+//    {
+//        super(givenDriver);
+//    }
     @Test
+//    public void loginValidEmailPasswordTest()
+//    {
+//        LoginPage loginPage = new LoginPage(driver);
+//        HomePage homePage = new HomePage(driver);
+//
+//        loginPage.provideEmail("james.patterson@testpro.io").providePassword("te$t$tudent").clickLoginButton();
+//
+//
+//        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+//    }
+
     public void loginValidEmailPasswordTest()
     {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-        loginPage.provideEmail("james.patterson@testpro.io").providePassword("te$t$tudent").clickLoginButton();
-
+        loginPage.login();
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
