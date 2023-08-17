@@ -31,8 +31,8 @@ public class LoginTests extends BaseTest
 
     public void loginValidEmailPasswordTest()
     {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.login();
 
