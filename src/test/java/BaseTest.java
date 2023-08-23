@@ -47,7 +47,7 @@ public class BaseTest
 
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
-        String gridURL = "http://172.31.10.130:4444";
+        String gridURL = "http://172.31.10.135:4444";
 
         switch (browser)
         {
