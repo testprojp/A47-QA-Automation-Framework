@@ -10,9 +10,9 @@ public class Homework25 extends BaseTest
     @Test
     public void playSong()
     {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        AllSongsPage allSongs = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        AllSongsPage allSongs = new AllSongsPage(getDriver());
 
         loginPage.provideEmail("james.patterson@testpro.io");
         loginPage.providePassword("te$t$tudent");
@@ -28,9 +28,9 @@ public class Homework25 extends BaseTest
     @Test
     public void hoverOverPlayButton()
     {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        AllSongsPage allSongs = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        AllSongsPage allSongs = new AllSongsPage(getDriver());
 
         loginPage.login();
 
@@ -46,6 +46,6 @@ public class Homework25 extends BaseTest
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
 
-        //Assert.assertTrue(doesPlaylistNameExist());
+        Assert.assertTrue(doesPlaylistNameExist());
     }
 }

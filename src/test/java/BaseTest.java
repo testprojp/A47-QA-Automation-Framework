@@ -45,7 +45,10 @@ public class BaseTest
         WebDriverManager.chromedriver().setup();
     }
 
+
+
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
+        System.out.println("Browser value:" + browser);
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://172.31.10.135:4444";
 
@@ -58,7 +61,7 @@ public class BaseTest
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--remote-allow-origins=*");
-                return driver = new EdgeDriver();
+                return driver = new EdgeDriver(edgeOptions);
             case "grid-edge": //gradle clean test -Dbrowser=grid-edge
                 caps.setCapability("browserName", "MicrosoftEdge");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
@@ -66,7 +69,8 @@ public class BaseTest
                 caps.setCapability("browserName", "firefox");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
             case "grid-chrome": //gradle clean test -Dbrowser=grid-chrome
-                caps.setCapability("browserName", "chrome");
+                //caps.setCapability("browserName", "chrome");
+                WebDriverManager.chromedriver().setup();
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
             case "lambda cloud":
                 return lambdaTest();
@@ -86,7 +90,10 @@ public class BaseTest
         //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--remote-allow-origins=*");
 
-        threadDriver.set(pickBrowser(System.getProperty("browser")));
+        String browser = System.getProperty("browser");
+        System.out.println("Browser value: " + browser);
+
+        threadDriver.set(pickBrowser(System.getProperty("browser")) );
         threadDriver.get().manage().timeouts();
 
         //driver = new ChromeDriver(options);
@@ -108,6 +115,7 @@ public class BaseTest
 
     public WebDriver getDriver()
     {
+        System.out.println("Driver is accessed");
         return threadDriver.get();
     }
 
@@ -180,28 +188,29 @@ public class BaseTest
         songSearchInput.click();
         songSearchInput.clear();
         songSearchInput.sendKeys("Pluto");
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
+
     }
 
     public void viewAllSongs() throws InterruptedException {
         //Selects View All button
         WebElement viewAllButton = driver.findElement(By.cssSelector("#searchExcerptsWrapper > div > div > section.songs > h1 > button"));
         viewAllButton.click();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
     }
 
     public void firstSongSelection() throws InterruptedException {
         //Selects first song
         WebElement firstSong = driver.findElement(By.cssSelector("section#songResultsWrapper tr.song-item td.title"));
         firstSong.click();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
     }
 
     public void addToButton() throws InterruptedException {
         //Clicks AddTo Button
         WebElement addToButton = driver.findElement(By.cssSelector("button.btn-add-to"));
         addToButton.click();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
     }
 
     public void selectedSongAddedToPlaylist() throws InterruptedException {
@@ -209,7 +218,7 @@ public class BaseTest
         //Thread.sleep(3000);
         WebElement songPlaylist = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/section[1]/section[11]/header/div[3]/div/section[1]/ul/li[5]"));
         songPlaylist.click();
-        Thread.sleep(20000);
+        //Thread.sleep(20000);
     }
 
     public void choosePlayList() throws InterruptedException {
@@ -225,14 +234,14 @@ public class BaseTest
     public void homeButton() throws InterruptedException {
         WebElement homeButton = driver.findElement(By.xpath("//*[@class='home active']"));
         homeButton.click();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
     }
 
     public void playSong() throws InterruptedException {
         WebElement playSong = driver.findElement(By.xpath("//*[@class='fa fa-play']"));
         playSong.click();
         playSong.click();
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
     }
 
     public void clickPlayButton()
@@ -302,9 +311,9 @@ public class BaseTest
 
     public WebElement hoverPlay()
     {
-        WebElement play = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='play-btn']")));
+        WebElement play = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("[data-testid='play-btn']")));
         actions.moveToElement(play).perform();
-        return driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        return driver.findElement(By.xpath("[data-testid='play-btn']"));
     }
 
     //Counting number of songs in a playlist
