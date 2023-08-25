@@ -13,10 +13,21 @@ dependencies {
     testImplementation 'org.testng:testng:7.6.1'
     implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
+    // Update the version of WebDriverManager
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.5.2'
 }
 
 test {
     useTestNG() {
         suites "src/test/resources/TestNG.xml"
+    }
+
+task testTestNG(type: Test)
+    {
+        useTestNG()
+                {
+                    suites "src/test/resources/TestNG.xml"
+                    systemProperty "browser", System.getProperty("browser")
+                }
     }
 }
