@@ -5,7 +5,7 @@ import pages.HomePage;
 import pages.LoginPage;
 
 
-public class Homework26 extends BaseTest
+public class Homework27 extends BaseTest
 {
     @Test
     public void playSong()
